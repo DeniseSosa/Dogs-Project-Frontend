@@ -1,5 +1,5 @@
 const {getDogs}= require('../controllers/getDogs')
-const dogsHandler= async (req,res)=> {
+const dogsHandler= async (_req,res)=> {
     try {
         const dog=await getDogs()
         console.log(dog)
