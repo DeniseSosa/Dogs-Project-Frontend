@@ -1,7 +1,7 @@
 const axios = require ('axios');
-
-
 require ('dotenv').config();
+const {Dog} = require('../db')
+
 const {API_KEY}= process.env;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
 
@@ -12,14 +12,19 @@ const getDogs= async ()=> {
          return {
              id:dog.id,
              name:dog.name,
-             weight:dog.weight,
-             height:dog.height,
+             weight:dog.weight.metric,
+             height:dog.height.metric,
+             temperament: dog.temperament,
              life_span:dog.life_span,
              image:dog.image,
+
          }
         }) 
         if(!apiBreedsMap)throw Error("not found")
-        return apiBreedsMap
+
+        const breeds_DB= await Dog.findAll()
+        return [...breeds_DB, ...apiBreedsMap]
+
 };
 
 module.exports= {

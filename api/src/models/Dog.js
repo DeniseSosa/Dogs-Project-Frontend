@@ -11,9 +11,9 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID, 
       primaryKey: true,
-      allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
     },
     image: {
       type: DataTypes.STRING,
@@ -28,7 +28,6 @@ module.exports = (sequelize) => {
     },
     life_span:{
       type: DataTypes.STRING,
-      allowNull:false,
     }
   }, {timestamps: false});
 };
