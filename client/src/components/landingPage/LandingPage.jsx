@@ -1,4 +1,5 @@
-const Landing = ()=>{
+const LandingPage = ()=>{
+    return (
     <div>
         <h1>My Dogs App</h1>
         <div>
@@ -12,5 +13,6 @@ const Landing = ()=>{
         </button>
         </Link>
     </div>
+    )
 }
-export default Landing;
+export default LandingPage;
