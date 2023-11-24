@@ -1,12 +1,11 @@
+import style from './LandingPage.module.css';
 import {Link} from "react-router-dom";
 
 const LandingPage = ()=>{
     return (
-    <div>
+    <div className={style.appContainer}>
         <h1>My Dogs App</h1>
-        <div>
-            <img/>
-        </div>
+            <img></img>
         <Link to="/">
         <button>Home</button>
         </Link>

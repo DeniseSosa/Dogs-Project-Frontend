@@ -1,6 +1,4 @@
-import { useSelector } from "react-redux";
-import Card from '../card/Card'
-const Cards = () => {
+const Card = () => {
     const {dogs}= useSelector(state=> state)
     return (
         <div>
@@ -20,5 +18,5 @@ const Cards = () => {
             }
         </div>
     )
-}
-export default Cards;
+};
+export default Card;
