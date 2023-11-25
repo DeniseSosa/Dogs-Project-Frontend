@@ -6,7 +6,7 @@ const LandingPage = ()=>{
     <div className={style.appContainer}>
         <h1>My Dogs App</h1>
             <img></img>
-        <Link to="/">
+        <Link to="/home">
         <button>Home</button>
         </Link>
     </div>

@@ -1,21 +1,11 @@
-const Card = () => {
-    const {dogs}= useSelector(state=> state)
+import style from './Card.module.css';
+
+const Card = ({name, weight, temperaments}) => {
     return (
-        <div>
-            {
-                dogs?.map((dog)=>{
-                    return (<Card
-                    key={dog.id}
-                    id= {dog.id}
-                    name ={dog.name}
-                    weight={dog.weight}
-                    height={dog.height}
-                    temperament= {dog.temperament}
-                    life_span={dog.life_span}
-                    image={dog.image}
-                    />)
-                })
-            }
+        <div className={style.cardContainer}>
+           <h2>{name}</h2>
+           <h2>{weight}</h2>
+           <h2>{temperaments}</h2>
         </div>
     )
 };
