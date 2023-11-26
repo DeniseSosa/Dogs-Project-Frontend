@@ -1,7 +1,7 @@
 //Este componente va a acceder al estado local de react name
 // para poder buscar la raza por nombre 
 import { useSelector, useDispatch } from "react-redux";
-import {useEffect } from "react";
+import React , {useEffect } from "react";
 import {getAllDogs} from '../../redux/actions/actions'
 import Cards from "../cards/Cards";
 

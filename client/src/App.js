@@ -11,7 +11,7 @@ const App= ()=> {
       <BrowserRouter>
       <Switch>
         <Route exact path="/" component={LandingPage}/>
-        <Route  path="/home" component={Home}/>
+        <Route  exact path="/home" component={Home}/>
         <Route exact path= "/dogs/:id" component={Detail} />
         <Route exact path= "/temperaments" component= {Form}/>
       </Switch>
