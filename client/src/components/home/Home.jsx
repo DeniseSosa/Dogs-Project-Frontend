@@ -11,7 +11,7 @@ const Home= ()=>{
     
 useEffect (()=> {
     dispatch(getAllDogs())
-},[])
+},[dispatch])
 
     return  (
     <div>

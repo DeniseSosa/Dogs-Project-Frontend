@@ -1,6 +1,7 @@
 const axios = require ('axios');
 require ('dotenv').config();
-const {Dog} = require('../db')
+const {Dog} = require('../db');
+const Temperaments = require('../models/Temperaments');
 
 const {API_KEY}= process.env;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
@@ -21,6 +22,7 @@ const getDogs= async ()=> {
         if(!apiBreedsMap)throw Error("not found")
 
         const breeds_DB= await Dog.findAll()
+
         return [...breeds_DB, ...apiBreedsMap]
 
 };
