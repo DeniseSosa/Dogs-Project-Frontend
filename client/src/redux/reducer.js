@@ -2,9 +2,8 @@ import { GET_ALL_DOGS } from "./actions/action-types"
 
 const initialState= {
     allDogs: [],
-    allTemperaments: [],
-
-}
+    allTemperaments: []
+};
 
 const reducer = (state= initialState, action) =>{
     switch(action.type){

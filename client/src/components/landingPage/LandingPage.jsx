@@ -5,7 +5,7 @@ const LandingPage = ()=>{
     return (
     <div className={style.appContainer}>
         <h1>My Dogs App</h1>
-            <img></img>
+            {/* <img></img> */}
         <Link to="/home">
         <button>Home</button>
         </Link>

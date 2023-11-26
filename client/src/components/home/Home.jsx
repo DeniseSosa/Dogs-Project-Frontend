@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import {useEffect } from "react";
 import {getAllDogs} from '../../redux/actions/actions'
 import Cards from "../cards/Cards";
-const Home= ()=>{
-    const {dogs} = useSelector(state => state);
-    const dispatch = useDispatch();
 
+const Home= ()=>{
+    const {allDogs} = useSelector(state => state);
+    const dispatch = useDispatch();
+    
     useEffect =(()=> {
         dispatch(getAllDogs())
-    },[dispatch])
+    },[]);
 
     return  (
     <div>
@@ -21,7 +22,7 @@ const Home= ()=>{
         <button>Search</button>
         </form>
         <div>
-            <Cards dogs= {dogs}/>
+            <Cards allDogs= {allDogs}/>
         </div>
     </div>
     )
