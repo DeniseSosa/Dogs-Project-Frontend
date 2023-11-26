@@ -2,12 +2,11 @@ const {getDogs}= require('../controllers/getDogs');
 
 const dogsHandler= async (_req,res)=> {
     try {
-        const dog=await getDogs()
-        //console.log(dog)
-        res.status(200).json(dog)
+        const dog= await getDogs()
+        return res.status(200).json(dog)
     
     } catch (error) {
-        res.status(500).send({error:error.message})
+        return res.status(500).send("Error al acceder a los datos")
         
     }
 }

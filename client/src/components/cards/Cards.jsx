@@ -4,15 +4,16 @@ const Cards = ({allDogs}) => {
     return (
     <div className={style.cardsContainer}>
         {
-            allDogs?.map((dog)=>{
+            allDogs?.map(({id, name, weight, height, life_span, temperament, image})=>{
                 return <Card 
-                key= {dog.id}
-                id= {dog.id}
-                name= {dog.name}
-                weight= {dog.weight}
-                height= {dog.height}
-                life_span= {dog.life_span}
-                image= {dog.image}
+                key= {id}
+                id= {id}
+                name= {name}
+                weight= {weight}
+                height= {height}
+                life_span= {life_span}
+                temperament= {temperament}
+                image= {image}
                 />
             })
         }

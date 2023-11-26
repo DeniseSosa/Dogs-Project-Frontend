@@ -6,12 +6,12 @@ import {getAllDogs} from '../../redux/actions/actions'
 import Cards from "../cards/Cards";
 
 const Home= ()=>{
-    const {allDogs} = useSelector(state => state);
+    const allDogs = useSelector(state => state.allDogs);
     const dispatch = useDispatch();
     
-    useEffect =(()=> {
-        dispatch(getAllDogs())
-    },[]);
+useEffect (()=> {
+    dispatch(getAllDogs())
+},[])
 
     return  (
     <div>
