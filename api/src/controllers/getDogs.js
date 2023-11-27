@@ -16,7 +16,7 @@ const getDogs= async ()=> {
              height:dog?.height?.metric,
              life_span:dog.life_span,
              temperament: dog?.temperament,
-             image:dog.reference_image_id?.url
+             image:dog?.image?.url
          }
         }) 
 

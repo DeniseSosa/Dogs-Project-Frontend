@@ -1,8 +1,9 @@
-import { GET_ALL_DOGS } from "./actions/action-types"
+import { GET_ALL_DOGS, GET_DOG_BY_ID } from "./actions/action-types"
 
 const initialState= {
     allDogs: [],
     allTemperaments: []
+
 };
 
 const reducer = (state= initialState, action) =>{
