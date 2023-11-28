@@ -13,7 +13,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/dogs', dogsHandler);
 router.get('/dogs/:idRaza', getDogByIdHandler );
-router.get('/dogs/name?=', dogsByNameHandler);
+router.get('/name', dogsByNameHandler);
 router.post('/dogs', postDogHandler);
 router.get('/temperaments', getTemperamentsHandler);
 

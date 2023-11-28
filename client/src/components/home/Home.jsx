@@ -5,7 +5,8 @@ import  {useEffect, useState } from "react";
 import {getAllDogs} from '../../redux/actions/actions'
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
-import SearchBar from ;
+import SearchBar from "../searchBar/SearchBar";
+
 
 const Home= ()=>{
     // Acceso al estado global
@@ -29,13 +30,13 @@ const nPage= Math.ceil(allDogs.length / dataQt);
     return  (
     <div>
         <h3>Este es el home </h3>
-        <SearchBar/>
         <div>
+            <SearchBar/>
             <Cards allDogs= {nDogs}/>
             <Pages 
             setCurrentPage={setCurrentPage} 
-            currentPage= {currentPage} n
-            Page={nPage} />
+            currentPage= {currentPage} 
+            nPage={nPage} />
         </div>
     </div>
     )
