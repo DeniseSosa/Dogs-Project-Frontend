@@ -8,7 +8,7 @@ const Card = ({id, name, weight , height, life_span, temperament, image})=> {
             </Link>
            <h2>{weight}</h2>
          <h2>{temperament}</h2>
-         <img src={image} alt= {name}/>
+         <img  className={style.cardImage}src={image} alt= {name}/>
         </div>
     )
 };

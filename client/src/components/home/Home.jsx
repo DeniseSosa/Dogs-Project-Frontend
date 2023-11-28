@@ -5,9 +5,10 @@ import  {useEffect, useState } from "react";
 import {getAllDogs} from '../../redux/actions/actions'
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
+import SearchBar from ;
 
 const Home= ()=>{
-    // Peticion al backend
+    // Acceso al estado global
     const allDogs = useSelector(state => state.allDogs);
     const dispatch = useDispatch();
     // Estados locales para la paginacion 
@@ -28,11 +29,7 @@ const nPage= Math.ceil(allDogs.length / dataQt);
     return  (
     <div>
         <h3>Este es el home </h3>
-        <form>
-        <label htmlFor=""></label>
-        <input type="search"/> 
-        <button>Search</button>
-        </form>
+        <SearchBar/>
         <div>
             <Cards allDogs= {nDogs}/>
             <Pages 
