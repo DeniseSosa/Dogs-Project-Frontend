@@ -18,16 +18,16 @@ export const getAllDogs= () =>{
     }
 }
 export const getDogByName = (name) => {
-    const endpoint = 'http://localhost:3001/name'
     return async (dispatch) => {
         try {
-            const {data} = await axios.get(endpoint +`/?name=${name}`)
+            const {data} = await axios.get(`http://localhost:3001/name?name=${name}`)
             return dispatch ({
                 type: GET_DOG_BY_NAME,
-                payload: data
+                payload:data
             })
         } catch (error) {
             return error.message
         }
     }
 }
+

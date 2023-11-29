@@ -10,7 +10,7 @@ import SearchBar from "../searchBar/SearchBar";
 
 const Home= ()=>{
     // Acceso al estado global
-    const allDogs = useSelector(state => state.allDogs);
+    const allDogs = useSelector(state => state.dogsCopy);
     const dispatch = useDispatch();
     // Estados locales para la paginacion 
     const [dataQt, setDataQt]= useState(8)
@@ -18,7 +18,7 @@ const Home= ()=>{
     
 useEffect (()=> {
     dispatch(getAllDogs())
-},[dispatch])
+},[])
 
 // Paginacion
 const lastIndex= currentPage* dataQt; // 1*8
@@ -29,15 +29,12 @@ const nPage= Math.ceil(allDogs.length / dataQt);
 
     return  (
     <div>
-        <h3>Este es el home </h3>
-        <div>
-            <SearchBar/>
+            <SearchBar setCurrentPage={setCurrentPage}/>
             <Cards allDogs= {nDogs}/>
             <Pages 
             setCurrentPage={setCurrentPage} 
             currentPage= {currentPage} 
             nPage={nPage} />
-        </div>
     </div>
     )
 }
