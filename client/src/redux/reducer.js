@@ -1,9 +1,10 @@
-import { GET_ALL_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME } from "./actions/action-types"
+import { GET_ALL_DOGS, GET_DOG_BY_ID, GET_DOG_BY_NAME, GET_TEMPERAMENTS } from "./actions/action-types"
 
 const initialState= {
     allDogs: [],
     dogsCopy: [],
-    allTemperaments: []
+    allTemperaments: [],
+    allTempCopy: []
 
 };
 
@@ -20,6 +21,14 @@ const reducer = (state= initialState, action) =>{
                 ...state,
                 dogsCopy: action.payload
             }
+        case GET_TEMPERAMENTS:
+            return {
+                ...state,
+                allTemperaments:action.payload,
+                allTempCopy: action.payload
+            }
+
+
         default:
             return {
                 ...state

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_DOGS, GET_DOG_BY_NAME } from "./action-types";
+import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_TEMPERAMENTS } from "./action-types";
 
 
 
@@ -27,6 +27,22 @@ export const getDogByName = (name) => {
             })
         } catch (error) {
             return error.message
+        }
+    }
+}
+
+export const getTemperaments = () =>{
+    const endpoint= "http://localhost:3001/temperaments"
+    return async(dispatch)=>{
+        try {
+            const {data} = await axios.get(endpoint)
+            return dispatch ({
+                type: GET_TEMPERAMENTS,
+                payload: data
+            })
+        } catch (error) {
+            error.message
+            
         }
     }
 }
