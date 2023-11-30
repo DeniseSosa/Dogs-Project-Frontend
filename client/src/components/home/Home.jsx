@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import  {useEffect, useState } from "react";
 // funciones de las actions
-import {getAllDogs,getTemperaments,tempAllNames} from '../../redux/actions/actions'
+import {getAllDogs,getTemperaments,tempAllNames, tempByOrigin} from '../../redux/actions/actions'
 // componentes
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
@@ -34,6 +34,9 @@ const nPage= Math.ceil(allDogs.length / dataQt);
 const handleAll = (event) => {
     dispatch(tempAllNames(event.target.value))
 }
+const handleDogOrigin = (event) => {
+    dispatch(tempByOrigin(event.target.value))
+}
 
     return  (
     <div>
@@ -45,7 +48,7 @@ const handleAll = (event) => {
                   })
                   }
             </select>
-            <select>
+            <select onChange={handleDogOrigin}>
                 <option value="apiTemperaments">Origin:Api</option>
                 <option value="dbTemperaments">Origin:DB</option>
             </select>

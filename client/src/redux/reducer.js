@@ -33,8 +33,13 @@ const reducer = (state= initialState, action) =>{
                 ...state,
                 dogsCopy: [...state.allDogs].filter((dog)=> dog.temperament?.includes(action.payload))
             }
-
-
+        case TEMP_BY_ORIGIN:
+        const dogByOrigin= (action.payload === "apiTemperaments")
+        ?[...state.allDogs].filter((dog)=> dog.created=== true)
+        :[...state.allDogs].filter((dog)=> dog.created=== false)
+            return {
+                dogsCopy: dogByOrigin
+            }
         default:
             return {
                 ...state
