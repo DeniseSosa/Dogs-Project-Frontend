@@ -3,7 +3,7 @@ require ('dotenv').config();
 const {API_KEY}= process.env;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
 const {Dog} = require('../db');
-const Temperaments = require('../models/Temperaments');
+
 
 
 const getDogs= async ()=> {
@@ -16,7 +16,8 @@ const getDogs= async ()=> {
              height:dog?.height?.metric,
              life_span:dog.life_span,
              temperament: dog?.temperament,
-             image:dog?.image?.url
+             image:dog?.image?.url,
+            created: false
          }
         }) 
 

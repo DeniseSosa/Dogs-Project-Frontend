@@ -12,4 +12,8 @@ module.exports = (sequelize)=>{sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        created:{
+            type: DataTypes.BOOLEAN,
+            created: true
+        }
     },{timestamps: false})}

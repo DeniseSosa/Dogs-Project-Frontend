@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_TEMPERAMENTS } from "./action-types";
+import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_TEMPERAMENTS, TEMP_ALL_NAMES} from "./action-types";
 
 
 
@@ -41,9 +41,12 @@ export const getTemperaments = () =>{
                 payload: data
             })
         } catch (error) {
-            error.message
+           return error.message
             
         }
     }
+}
+export const tempAllNames= (temp) =>{
+    return ({type:TEMP_ALL_NAMES, payload:temp})
 }
 
