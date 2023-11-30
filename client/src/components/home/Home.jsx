@@ -6,7 +6,8 @@ import {getAllDogs,
      getTemperaments,
      tempAllNames,
      nameByOrigin,
-     alphabeticOrder} from '../../redux/actions/actions'
+     alphabeticOrder,
+     orderByWeight} from '../../redux/actions/actions'
 // componentes
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
@@ -26,7 +27,7 @@ const Home= ()=>{
 useEffect (()=> {
     dispatch(getAllDogs())
     dispatch(getTemperaments())
-},[])
+},[dispatch])
 
 // Paginacion
 const lastIndex= currentPage* dataQt; // 1*8
@@ -43,6 +44,9 @@ const handleDogOrigin = (event) => {
 }
 const handleOrder = (event) =>{
     dispatch(alphabeticOrder(event.target.value))
+}
+const handleWeight= (event) => {
+    dispatch(orderByWeight(event.target.value))
 }
 
     return  (
@@ -63,7 +67,7 @@ const handleOrder = (event) =>{
                 <option value="ascendent">from A to Z</option>
                 <option value="desendent">from Z to A</option>
             </select>
-            <select>
+            <select onChange={handleWeight}>
                 <option value="lighter">Lighter</option>
                 <option value="heavier">Heavier</option>
             </select>

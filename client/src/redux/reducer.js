@@ -1,9 +1,10 @@
-import { ALPHABETIC_ORDER, GET_ALL_DOGS,
-      GET_DOG_BY_NAME,
-     GET_TEMPERAMENTS,
-     TEMP_ALL_NAMES,
-     NAME_BY_ORIGIN,
-    ALPHABETIC_ORDER } from "./actions/action-types"
+import { GET_ALL_DOGS,
+    GET_DOG_BY_NAME,
+    GET_TEMPERAMENTS,
+    TEMP_ALL_NAMES,
+    NAME_BY_ORIGIN,
+    ALPHABETIC_ORDER,
+    ORDER_BY_WEIGHT } from "./actions/action-types"
 
 const initialState= {
     allDogs: [],
@@ -47,16 +48,21 @@ const reducer = (state= initialState, action) =>{
                 dogsCopy: dogByOrigin
             }
         case ALPHABETIC_ORDER:
-            if(action.payload ==="ascendent"){
+            const orderedDogs= (action.payload ==="ascendent")
+             ? state.dogsCopy.sort((dog1, dog2)=> dog1.name.localeCompare(dog2.name))
+             : state.dogsCopy.sort((dog1, dog2)=> dog2.name.localeCompare(dog1.name))
                 return {
                     ...state,
-                    dogsCopy: [...state.allDogs].sort((dog1,dog2)=> dog1.name.toLowerCase() < dog2.name.toLowerCase())
+                    dogsCopy: orderedDogs
                 }
-            }else{
-                return {
-                    ...state,
-                    dogsCopy: [...state.allDogs].reverse.sort((dog1, dog2)=> dog1.name.toLowerCase() > dog2.name.toLowerCase() )
-                }
+        case ORDER_BY_WEIGHT:
+            const weight = (action.payload === "lighter")
+            ? (state.dogsCopy.sort((dogA,dogB)=> dogA.weight.split("-")[0] - dogB.weight.split("-")[0] ))
+            : (state.dogsCopy.sort((dogA,dogB)=> dogB.weight.split("-")[0] - dogA.weight.split("-")[0] ))
+            return {
+                ...state,
+                dogsCopy: weight
+
             }
 
         default:

@@ -4,7 +4,8 @@ import { GET_ALL_DOGS,
      GET_TEMPERAMENTS,
      TEMP_ALL_NAMES,
      NAME_BY_ORIGIN,
-     ALPHABETIC_ORDER} from "./action-types";
+     ALPHABETIC_ORDER,
+     ORDER_BY_WEIGHT} from "./action-types";
 
 
 
@@ -60,4 +61,7 @@ export const nameByOrigin = (origin) =>{
 }
 export const alphabeticOrder = (order) =>{
     return ({type: ALPHABETIC_ORDER, payload: order })
+}
+export const orderByWeight= (weightOrder) =>{
+    return ({type: ORDER_BY_WEIGHT, payload: weightOrder})
 }
