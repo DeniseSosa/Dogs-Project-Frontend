@@ -2,7 +2,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import  {useEffect, useState } from "react";
 // funciones de las actions
-import {getAllDogs,getTemperaments,tempAllNames, tempByOrigin} from '../../redux/actions/actions'
+import {getAllDogs,
+     getTemperaments,
+     tempAllNames,
+     nameByOrigin,
+     alphabeticOrder} from '../../redux/actions/actions'
 // componentes
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
@@ -35,7 +39,10 @@ const handleAll = (event) => {
     dispatch(tempAllNames(event.target.value))
 }
 const handleDogOrigin = (event) => {
-    dispatch(tempByOrigin(event.target.value))
+    dispatch(nameByOrigin(event.target.value))
+}
+const handleOrder = (event) =>{
+    dispatch(alphabeticOrder(event.target.value))
 }
 
     return  (
@@ -52,7 +59,7 @@ const handleDogOrigin = (event) => {
                 <option value="apiTemperaments">Origin:Api</option>
                 <option value="dbTemperaments">Origin:DB</option>
             </select>
-            <select name="" id="">
+            <select onChange={handleOrder}>
                 <option value="ascendent">from A to Z</option>
                 <option value="desendent">from Z to A</option>
             </select>

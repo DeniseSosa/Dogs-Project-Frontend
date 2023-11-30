@@ -3,7 +3,8 @@ import { GET_ALL_DOGS,
      GET_DOG_BY_NAME,
      GET_TEMPERAMENTS,
      TEMP_ALL_NAMES,
-     TEMP_BY_ORIGIN } from "./action-types";
+     NAME_BY_ORIGIN,
+     ALPHABETIC_ORDER} from "./action-types";
 
 
 
@@ -54,6 +55,9 @@ export const tempAllNames= (temp) =>{
     return ({type:TEMP_ALL_NAMES, payload:temp})
 }
 
-export const tempByOrigin = (origin) =>{
-    return ({type: TEMP_BY_ORIGIN, payload:origin})
+export const nameByOrigin = (origin) =>{
+    return ({type: NAME_BY_ORIGIN, payload:origin})
+}
+export const alphabeticOrder = (order) =>{
+    return ({type: ALPHABETIC_ORDER, payload: order })
 }
