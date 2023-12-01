@@ -4,10 +4,10 @@ const Card = ({id, name, weight , height, life_span, temperament, image})=> {
     return (
         <div className={style.cardContainer}>
             <Link to= {`/detail/${id}`}>
-           <h2>{name}</h2>
+           <h3>Name:{name}</h3>
             </Link>
-           <h2>{weight}</h2>
-         <h2>{temperament}</h2>
+           <h4>Weight: {weight}</h4>
+         <h4>Temperaments:{temperament}</h4>
          <img  className={style.cardImage}src={image} alt= {name}/>
         </div>
     )

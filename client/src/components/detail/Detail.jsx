@@ -20,12 +20,12 @@ const Detail = () => {
     }, [idRaza])
     return (
         <div>
-            <h3>{dogDetail.name}</h3>
-            <h4>{dogDetail.id}</h4>
-            <h5>{dogDetail.weight}</h5>
-            <h5>{dogDetail.height}</h5>
-            <h5>{dogDetail.life_span}</h5>
-            <h5>{dogDetail.temperament}</h5>
+            <h3>Name:{dogDetail.name}</h3>
+            <h4>Id:{dogDetail.id}</h4>
+            <h5>Weight:{dogDetail.weight}</h5>
+            <h5>Height:{dogDetail.height}</h5>
+            <h5>Life span:{dogDetail.life_span}</h5>
+            <h5>Temperament:{dogDetail.temperament}</h5>
             <img src={dogDetail.image} alt={dogDetail.name}/>
 
         </div>
