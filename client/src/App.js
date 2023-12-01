@@ -13,7 +13,7 @@ const App= ()=> {
         <Route exact path="/" component={LandingPage}/>
         <Route  exact path="/home" component={Home}/>
         <Route exact path= "/detail/:idRaza" component={Detail} />
-        <Route exact path= "/temperaments" component= {Form}/>
+        <Route exact path= "/form" component= {Form}/>
       </Switch>
       </BrowserRouter>
     
