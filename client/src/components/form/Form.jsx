@@ -99,7 +99,7 @@ const Form = () => {
              onChange={onChange}
              />+15
 
-            <Temperaments onChange={onChange}/>
+            <Temperaments onChange={onChange} name="temperament" value={create.temperament}/>
 
             
             {

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState} from "react";
 import { getTemperaments, tempAllNames } from "../../redux/actions/actions";
-const Temperaments = () =>{
+const Temperaments = ({onChange}) =>{
     const[temp, setTemp]= useState([])
     const {allTempCopy} = useSelector(state=> state);
     const dispatch = useDispatch();
@@ -45,8 +45,8 @@ const Temperaments = () =>{
         {
         temp.map((tem)=> <p key={temp.id}>{tem}</p>)
         }
-        <input/>
-        <label>Add a new temperament Here!</label>
+        <label>Didn't find the temperaments? Add it here!!</label>
+        <input type="text" name="text" onChange={onChange} />
         </section>
     )
 }
