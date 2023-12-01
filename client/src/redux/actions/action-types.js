@@ -6,3 +6,4 @@ export const TEMP_ALL_NAMES = 'TEMP_ALL_NAMES';
 export  const NAME_BY_ORIGIN = 'NAME_BY_ORIGIN';
 export const ALPHABETIC_ORDER = 'ALPHABETIC_ORDER';
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT';
+export const POST_DOG = 'POST_DOG';

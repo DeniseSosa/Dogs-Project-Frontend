@@ -4,7 +4,8 @@ import { GET_ALL_DOGS,
     TEMP_ALL_NAMES,
     NAME_BY_ORIGIN,
     ALPHABETIC_ORDER,
-    ORDER_BY_WEIGHT } from "./actions/action-types"
+    ORDER_BY_WEIGHT, 
+    POST_DOG} from "./actions/action-types"
 
 const initialState= {
     allDogs: [],
@@ -63,6 +64,10 @@ const reducer = (state= initialState, action) =>{
                 ...state,
                 dogsCopy: weight
 
+            }
+        case POST_DOG:
+            return {
+                allDogs: [...state.allDogs, action.payload]
             }
 
         default:

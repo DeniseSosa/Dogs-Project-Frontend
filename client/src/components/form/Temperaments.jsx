@@ -9,13 +9,10 @@ const Temperaments = () =>{
     useEffect (()=>{
         dispatch(getTemperaments())
     },[dispatch])
-
-    const handleAll = (event) => {
-        dispatch(tempAllNames(event.target.value))
-    }
-
  
+    
     const tempSelected= (event) =>{  
+        dispatch(tempAllNames(event.target.value))
         const opciones = event.target.options
         const seleccionadas = []
         for (let i = 0; i < opciones.length; i++) {
@@ -37,18 +34,19 @@ const Temperaments = () =>{
 
     return(
         <section>
-        <select onSearch={handleAll} multiple onChange={tempSelected}>
+        <select onChange={tempSelected} multiple >
                 <option > Temperaments:</option>
-                  { allTempCopy.map(temp => {
+                  { allTempCopy.sort().map(temp => {
                       return  <option value={temp}  key={temp}>{temp}</option>
                   })
                   }
         </select>
-<h4>The selected temperaments are:</h4>
-{
-temp.map((tem)=> (<p key={temp.id}> {tem} </p>))
-}
-
+        <h4>The selected temperaments are:</h4>
+        {
+        temp.map((tem)=> <p key={temp.id}>{tem}</p>)
+        }
+        <input/>
+        <label>Add a new temperament Here!</label>
         </section>
     )
 }

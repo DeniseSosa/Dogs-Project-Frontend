@@ -5,11 +5,12 @@ import { GET_ALL_DOGS,
      TEMP_ALL_NAMES,
      NAME_BY_ORIGIN,
      ALPHABETIC_ORDER,
-     ORDER_BY_WEIGHT} from "./action-types";
+     ORDER_BY_WEIGHT,
+    POST_DOG} from "./action-types";
 
 
-
-export const getAllDogs= () =>{
+    
+    export const getAllDogs= () =>{
     const endpoint = "http://localhost:3001/dogs";
     return async (dispatch)=>{
         try {
@@ -64,4 +65,19 @@ export const alphabeticOrder = (order) =>{
 }
 export const orderByWeight= (weightOrder) =>{
     return ({type: ORDER_BY_WEIGHT, payload: weightOrder})
+}
+
+export const postDog = () =>{
+    return async (dispatch) =>{
+        const endpoint = "http://localhost:3001/dogs";
+        try {
+            const {data} = await axios.post(endpoint)
+            return dispatch ({
+                type: POST_DOG,
+                payload: data
+            })
+        } catch (error) {
+            return error.message
+        }
+    }
 }
