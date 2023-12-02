@@ -16,7 +16,7 @@ const getTemperamentsController= async()=>{
        return tempsApi.indexOf(temp) === index
     })
     tempsFiltered.filter ((temp)=> temp!== "")
-    console.log(tempsFiltered)
+    //console.log(tempsFiltered)
    
     tempsFiltered.forEach(temperamento =>{
             if(temperamento){ 

@@ -12,6 +12,7 @@ import {getAllDogs,
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
 import SearchBar from "../searchBar/SearchBar";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 const Home= ()=>{
@@ -52,6 +53,7 @@ const handleWeight= (event) => {
     return  (
     <div>
             <SearchBar setCurrentPage={setCurrentPage}/>
+
             <select onChange={handleAll}>
                 <option value=""> Temperaments:</option>
                   { allTempCopy.map(temp => {
@@ -76,6 +78,10 @@ const handleWeight= (event) => {
             setCurrentPage={setCurrentPage} 
             currentPage= {currentPage} 
             nPage={nPage} />
+
+            <Link to="/form">
+            <button> Create your own Breed</button>
+            </Link>
     </div>
     )
 }

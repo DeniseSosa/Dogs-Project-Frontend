@@ -67,9 +67,10 @@ const reducer = (state= initialState, action) =>{
             }
         case POST_DOG:
             return {
-                allDogs: [...state.allDogs, action.payload]
+                ...state,
+                allDogs: [...state.allDogs, action.payload],
+                dogsCopy:[...state.dogsCopy, action.payload]
             }
-
         default:
             return {
                 ...state

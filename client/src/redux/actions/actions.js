@@ -6,7 +6,7 @@ import { GET_ALL_DOGS,
      NAME_BY_ORIGIN,
      ALPHABETIC_ORDER,
      ORDER_BY_WEIGHT,
-    POST_DOG} from "./action-types";
+     POST_DOG} from "./action-types";
 
 
     
@@ -67,11 +67,11 @@ export const orderByWeight= (weightOrder) =>{
     return ({type: ORDER_BY_WEIGHT, payload: weightOrder})
 }
 
-export const postDog = () =>{
+export const postDog = (create) =>{
     return async (dispatch) =>{
         const endpoint = "http://localhost:3001/dogs";
         try {
-            const {data} = await axios.post(endpoint)
+            const {data} = await axios.post(endpoint, create)
             return dispatch ({
                 type: POST_DOG,
                 payload: data
