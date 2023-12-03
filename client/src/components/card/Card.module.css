@@ -5,6 +5,10 @@
     padding: 10px;
     border: 1px solid #000;
     border-radius: 10px;
+    cursor: pointer;
+    -moz-osx-font-smothing: greyscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
     transition: transform 0.3s ease-in-out;
 }
 .cardContainer :hover{
