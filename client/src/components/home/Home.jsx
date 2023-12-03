@@ -55,13 +55,14 @@ const handleWeight= (event) => {
     return  (
     <div className={style.homeContainer}>
             <SearchBar setCurrentPage={setCurrentPage}/>
-
+        
+        <div className={style.selects}> 
             <select onChange={handleAll}>
                 <option value=""> Temperaments:</option>
                   { allTempCopy.map(temp => {
                       return  <option value={temp}  key={temp}>{temp}</option>
-                  })
-                  }
+                    })
+                }
             </select>
             <select onChange={handleDogOrigin}>
                 <option value="apiTemperaments">Origin:Api</option>
@@ -75,6 +76,7 @@ const handleWeight= (event) => {
                 <option value="lighter">Lighter</option>
                 <option value="heavier">Heavier</option>
             </select>
+        </div>
             <Cards allDogs= {nDogs}/>
             <Pages 
             setCurrentPage={setCurrentPage} 
