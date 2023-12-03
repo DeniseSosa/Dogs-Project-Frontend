@@ -1,0 +1,8 @@
+.homeContainer{
+    background: linear-gradient(
+        to left,
+        rgb(0, 119, 255) 0%
+        rgb(0, 255, 247) 100%
+    );
+
+}

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 const Card = ({ id, name, weight, height, life_span, temperament, image }) => {
   return (
     <div className={style.cardContainer}>
-      <div>
+      <div className={style.cardNameH5}>
         <Link to={`/detail/${id}`}>
           <h5>Name:{name}</h5>
         </Link>
       </div>
 
-      <div>
+      <div className={style.attributesP}>
         <p>Weight: {weight}</p>
         <p>Temperaments:{temperament}</p>
       </div>

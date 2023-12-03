@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import style from "./SearchBar.module.css"
 import { getAllDogs, getDogByName } from "../../redux/actions/actions";
 
 
@@ -27,17 +28,24 @@ const SearchBar = ({setCurrentPage}) => {
         dispatch(getAllDogs())
     }
  return(
-    <div>
+    <div className={style.searchContainer}>
         <form onSubmit={handleSubmit}>
         <input 
         type="text"
         value={name}
         onChange={handleName}
         placeholder="look for breeds"/>
-        <button 
-        type="submit" onClick= {onSearch}>Search: </button>
+
+        <button className={style.searchButton}
+        type="submit" 
+        onClick= {onSearch}
+        >Search: 
+        </button>
         </form>
-        <button onClick={backAll} >Back all</button>
+        <button className={style.backAllButton}
+        onClick={backAll} 
+        >Back all
+        </button>
     </div>
     )
 }

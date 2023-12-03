@@ -1,8 +1,8 @@
 .cardsContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 12px;
-    width: 80%;
-    height: auto;
-    margin: 0%;
-}
+    width: 85vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: green solid;
+} 

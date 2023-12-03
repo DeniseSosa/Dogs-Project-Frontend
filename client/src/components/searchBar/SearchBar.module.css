@@ -1,0 +1,21 @@
+.searchContainer {
+    border:none;
+    outline: none;
+    padding: 10px;
+    width: 150px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+.searchButton{
+    padding: 10px;
+    background-color: rgb(12, 12, 36);
+    color: rgb(190, 219, 244);
+}
+.backAllButton{
+    padding: 10px;
+    background-color: rgb(12, 12, 36);
+    color: rgb(190, 219, 244);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}

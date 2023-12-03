@@ -1,21 +1,32 @@
 .cardContainer{
     display: flex;
-    flex-direction: column;
-    margin: 10px;
-    padding: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: rgb(114, 190, 245);
     border: 1px solid #000;
     border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    max-width: 250px;
     cursor: pointer;
-    -moz-osx-font-smothing: greyscale;
     backface-visibility: hidden;
-    transform: translateZ(0);
-    transition: transform 0.3s ease-in-out;
+    transform:translateZ(0);
+    transition: transform 0.3s ease-in-out; 
 }
-.cardContainer :hover{
+ .cardContainer:hover{
     transform: scale(1.1);
-}
-.cardImage {
-    object-fit: scale-down;
-    height: 95%;
-    width: 104%;
-}
+ }
+
+ .cardNameH5{
+     font-size: 1.3em;
+    }
+    .attributesP{
+        font-size: .9em;
+    }
+    .cardImage {
+        object-fit: scale-down;
+       height: 72%;
+       width: 79%;
+        filter: drop-shadow(10px 5px 5px #027184);
+        margin: 20px;
+   }

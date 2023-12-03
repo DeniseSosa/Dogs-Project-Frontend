@@ -13,6 +13,8 @@ import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
 import SearchBar from "../searchBar/SearchBar";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+//Style
+import style from "./Home.module.css"
 
 
 const Home= ()=>{
@@ -51,7 +53,7 @@ const handleWeight= (event) => {
 }
 
     return  (
-    <div>
+    <div className={style.homeContainer}>
             <SearchBar setCurrentPage={setCurrentPage}/>
 
             <select onChange={handleAll}>
