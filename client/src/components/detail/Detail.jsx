@@ -1,6 +1,9 @@
+// Hooks
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+//Dependencies
 import axios from "axios";
+
 
 
 const Detail = () => {
@@ -19,7 +22,7 @@ const Detail = () => {
          })
     }, [idRaza])
     return (
-        <div>
+        <div className={style.detailContainer}>
             <h3>Name:{dogDetail.name}</h3>
             <h4>Id:{dogDetail.id}</h4>
             <h5>Weight:{dogDetail.weight}</h5>

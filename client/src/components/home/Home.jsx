@@ -56,36 +56,36 @@ const handleWeight= (event) => {
     <div className={style.homeContainer}>
             <SearchBar setCurrentPage={setCurrentPage}/>
         
-        <div className={style.selects}> 
-            <select onChange={handleAll}>
+        <div className={style.selectDiv}> 
+            <select onChange={handleAll}  className={style.selectors}>
                 <option value=""> Temperaments:</option>
                   { allTempCopy.map(temp => {
                       return  <option value={temp}  key={temp}>{temp}</option>
                     })
                 }
-            </select>
-            <select onChange={handleDogOrigin}>
+            </select >
+            <select onChange={handleDogOrigin}  className={style.selectors}>
                 <option value="apiTemperaments">Origin:Api</option>
                 <option value="dbTemperaments">Origin:DB</option>
             </select>
-            <select onChange={handleOrder}>
+            <select onChange={handleOrder} className={style.selectors}>
                 <option value="ascendent">from A to Z</option>
                 <option value="desendent">from Z to A</option>
             </select>
-            <select onChange={handleWeight}>
+            <select onChange={handleWeight} className={style.selectors}>
                 <option value="lighter">Lighter</option>
                 <option value="heavier">Heavier</option>
             </select>
         </div>
+            <Link to="/form">
+            <button  className={style.create} > Create your own Breed</button>
+            </Link>
             <Cards allDogs= {nDogs}/>
             <Pages 
             setCurrentPage={setCurrentPage} 
             currentPage= {currentPage} 
             nPage={nPage} />
 
-            <Link to="/form">
-            <button> Create your own Breed</button>
-            </Link>
     </div>
     )
 }

@@ -5,7 +5,43 @@
     align-items: center;
 }
 
-.selects{
+.selectDiv{
     margin: 10px;
-    padding: 20px;
+    padding: 8px;
+}
+.selectors{
+    padding: 8px;
+    background-color: transparent;
+    border-radius: 5px;
+    width: 130px;
+    height: 40px;
+    font-weight:600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0px #fcb92724,
+     7px 7px 20px 0 #fde5c5;
+    outline: none;
+    border:#fcb92719;
+}
+.selectors:hover{
+    box-shadow: 0 0 10px #291901;
+}
+.create{
+        padding: 8px;
+        background-color: transparent;
+        border-radius: 5px;
+        width: 197px;
+        height: 40px;
+        font-weight:600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 2px 2px 0px #fcb92724,
+         7px 7px 20px 0 #fde5c5;
+        outline: none;
+        border:#fcb92719;
+}
+.create:hover{
+    box-shadow: 0 0 10px #291901;
 }

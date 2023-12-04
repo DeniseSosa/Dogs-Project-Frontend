@@ -26,7 +26,7 @@ const reducer = (state= initialState, action) =>{
         case GET_DOG_BY_NAME:
             return {
                 ...state,
-                allDogs: action.payload
+                dogsCopy: action.payload
             }
         case GET_TEMPERAMENTS:
             return {

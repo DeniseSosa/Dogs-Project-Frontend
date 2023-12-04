@@ -1,3 +1,4 @@
+import style from "./Pages.module.css"
 const Pages = ({setCurrentPage, currentPage, nPage}) => {
 
     const next = () =>{
@@ -7,10 +8,13 @@ const Pages = ({setCurrentPage, currentPage, nPage}) => {
         if(currentPage !== 1) setCurrentPage(currentPage -1)
     }
     return (
-        <div>
-            <button onClick={back}>Back</button>
-            <h2>{currentPage} / {nPage} </h2>
-            <button onClick={next}>Next</button>
+        <div className={style.pagesContainer}>
+
+            <button onClick={back} className={style.buttonBack}>Back</button>
+
+            <h2 className={style.pageNumber}>{currentPage} / {nPage} </h2>
+
+            <button onClick={next} className={style.buttonBack}>Next</button>
         </div>
     )
 }

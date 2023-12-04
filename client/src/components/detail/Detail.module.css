@@ -1,0 +1,6 @@
+.detailContainer{
+    background-image: url(../landingPage/src/huella.jfif);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
