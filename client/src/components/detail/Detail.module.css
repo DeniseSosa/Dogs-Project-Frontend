@@ -1,6 +1,37 @@
 .detailContainer{
     background-image: url(../landingPage/src/huella.jfif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+ 
+}
+
+.detailP, .detailName{
+    font-size: 20px;
+    background: -webkit-linear-gradient(left, red, rgb(145, 96, 5), rgb(174, 174, 4), green, blue, indigo, rgb(243, 43, 243));
+    -webkit-background-clip:  text;
+    -webkit-text-fill-color: transparent;
+    transition: color 0.5s;
+}
+
+.description:hover {
+    -webkit-text-fill-color: rgba(255,255,255,0.5);
+}
+.imageDetail{
+    border-radius: 10px;
+    object-fit:scale-down;
+    height: 50%;
+    width: 60%;
+    filter: drop-shadow(10px 5px 5px #faa845);
+    margin: 20px;
+    transition: transform 2s;
+}
+
+.imageDetail:hover{
+    transform:rotate(2deg);
 }
