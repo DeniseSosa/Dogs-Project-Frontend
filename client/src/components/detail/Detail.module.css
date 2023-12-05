@@ -33,5 +33,5 @@
 }
 
 .imageDetail:hover{
-    transform:rotate(2deg);
+    transform: rotateY(1turn)
 }

@@ -12,7 +12,7 @@ import {getAllDogs,
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
 import SearchBar from "../searchBar/SearchBar";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 //Style
 import style from "./Home.module.css"
 
@@ -56,26 +56,30 @@ const handleWeight= (event) => {
     <div className={style.homeContainer}>
             <SearchBar setCurrentPage={setCurrentPage}/>
         
-        <div className={style.selectDiv}> 
+            <div className={style.selectDiv}> 
             <select onChange={handleAll}  className={style.selectors}>
                 <option value=""> Temperaments:</option>
-                  { allTempCopy.map(temp => {
-                      return  <option value={temp}  key={temp}>{temp}</option>
+                  { allTempCopy.sort().map((temp,index )=> {
+                      return  <option value={temp.name}  key={index}>{temp.name}</option>  
                     })
                 }
             </select >
+
             <select onChange={handleDogOrigin}  className={style.selectors}>
                 <option value="apiTemperaments">Origin:Api</option>
                 <option value="dbTemperaments">Origin:DB</option>
             </select>
+
             <select onChange={handleOrder} className={style.selectors}>
                 <option value="ascendent">from A to Z</option>
                 <option value="desendent">from Z to A</option>
             </select>
+
             <select onChange={handleWeight} className={style.selectors}>
                 <option value="lighter">Lighter</option>
                 <option value="heavier">Heavier</option>
             </select>
+
         </div>
             <Link to="/form">
             <button  className={style.create} > Create your own Breed</button>
@@ -89,4 +93,4 @@ const handleWeight= (event) => {
     </div>
     )
 }
-export default Home;
+export default Home

@@ -28,13 +28,14 @@ const SearchBar = ({setCurrentPage}) => {
         dispatch(getAllDogs())
     }
  return(
-    <div className={style.searchContainer}>
-        <form onSubmit={handleSubmit}>
+    <div>
+        <form onSubmit={handleSubmit} className={style.searchContainer} >
         <input 
         type="text"
         value={name}
         onChange={handleName}
-        placeholder="look for breeds"/>
+        placeholder="look for breeds"
+        className={style.searchContainer}/>
 
         <button className={style.searchButton}
         type="submit" 

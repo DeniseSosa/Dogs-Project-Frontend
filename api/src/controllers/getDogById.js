@@ -7,8 +7,7 @@ const getDogById = async (idRaza) => {
     if(isNaN(idRaza)){
         const dogDbId= await Dog.findByPk(idRaza,{
                 include:{
-                     model: Temperaments,
-                    }
+                     model: Temperaments, as:"temperament"}
                 });
         return dogDbId;
     } else {

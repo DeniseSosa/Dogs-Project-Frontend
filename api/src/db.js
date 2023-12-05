@@ -33,8 +33,8 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-DogModel(sequelize);// ESTO ES LO QUE ESTA HACIENDO EL MODELDEFINERS DE ARRIBA!
-TemperamentsModel(sequelize);
+// DogModel(sequelize);// ESTO ES LO QUE ESTA HACIENDO EL MODELDEFINERS DE ARRIBA!
+// TemperamentsModel(sequelize);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
@@ -42,7 +42,7 @@ const { Dog, Temperaments} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Dog.belongsToMany(Temperaments,{through: 'dog_temperaments'});
+Dog.belongsToMany(Temperaments,{through: 'dog_temperaments',as: 'temperament'});
 Temperaments.belongsToMany(Dog, {through: 'dog_temperaments'})
 
 module.exports = {

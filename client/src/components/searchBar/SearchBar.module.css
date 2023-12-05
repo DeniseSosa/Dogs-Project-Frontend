@@ -3,10 +3,13 @@
     outline: none;
     padding: 10px;
     width: 268px;
-    height: 30px;
+    height: 20px;
     line-height: 70px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     border-radius: 5px;
+    display:flex;
+    justify-content: right;
+    bottom: 30px;
 }
 .searchButton{
     padding: 8px;

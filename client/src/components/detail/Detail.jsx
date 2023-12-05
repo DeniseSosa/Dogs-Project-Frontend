@@ -1,6 +1,7 @@
 // Hooks
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {Link} from 'react-router-dom'
 //Dependencies
 import axios from "axios";
 //style
@@ -22,13 +23,16 @@ const Detail = () => {
   }, [idRaza]);
   return (
     <div className={style.detailContainer}>
-      <h2 className={style.detailName}>Name:{dogDetail.name}</h2>
+ <h2 className={style.detailName}>Name:{dogDetail.name}</h2>
       <p className={style.detailP}>Id:{dogDetail.id}</p>
       <p className={style.detailP}>Weight:{dogDetail.weight}</p>
       <p className={style.detailP}>Height:{dogDetail.height}</p>
       <p className={style.detailP}>Life span:{dogDetail.life_span}</p>
-      <p className={style.detailP}>Temperament:{dogDetail.temperament}</p>
+      <p className={style.detailP}>Temperament:{dogDetail?.temperament?.name}</p>
       <img src={dogDetail.image} alt={dogDetail.name} className={style.imageDetail} />
+      <Link to="/home">
+      <button>Home</button>
+      </Link>
     </div>
   );
 };
