@@ -2,7 +2,8 @@ const axios = require ('axios');
 require ('dotenv').config();
 const {API_KEY}= process.env;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
-const {Dog} = require('../db');
+const {Dog, Temperaments} = require('../db');
+
 
 
 
@@ -17,15 +18,29 @@ const getDogs= async ()=> {
              life_span:dog.life_span,
              temperament: dog?.temperament,
              image:dog?.image?.url,
-            created: false
+             created: false
          }
         }) 
 
         
-        const breeds_DB = await Dog.findAll()
+        const breeds_DB = await Dog.findAll({
+            include:{
+                 model: Temperaments, as:"temperament"}})
+        const dogDB= breeds_DB.map(dog=> {
+            return {
+                id: dog.id,
+                name:dog.name,
+                weight: dog.weight,
+                height:dog.height,
+                life_span:dog.life_span,
+                image: dog.image,
+                created:true,
+                temperament: dog.temperament.map(temp=> temp.name)
+            }}
+        )
+        //console.log(breeds_DB); me devuelve en temperament un array temperament:[friendly]
 
-
-        return [...breeds_DB, ...apiBreedsMap]
+        return [...dogDB, ...apiBreedsMap]
 
 };
 

@@ -15,7 +15,9 @@ const getTemperamentsController= async()=>{
    const tempsFiltered= tempsApi.filter((temp,index)=> { //retorna el primer indice del arreglo en donde se encuentre un elemento dado.
        return tempsApi.indexOf(temp) === index
     })
-    
+//     tempsFiltered.forEach(temperament => {
+//    if(temperament) Temperaments.bulkCreate({name:temperament})})
+//     return tempsFiltered  ESTO DEVUELVE UN ARREGLO DE TEMPERAMENTOS
     const temperamentsObject= tempsFiltered.map((temperament)=> { // aqui convierto los temperamentos a un objeto
         return {
             name:temperament

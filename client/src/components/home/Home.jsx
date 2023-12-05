@@ -66,8 +66,8 @@ const handleWeight= (event) => {
             </select >
 
             <select onChange={handleDogOrigin}  className={style.selectors}>
-                <option value="apiTemperaments">Origin:Api</option>
-                <option value="dbTemperaments">Origin:DB</option>
+                <option value="api">Origin:Api</option>
+                <option value="db">Origin:DB</option>
             </select>
 
             <select onChange={handleOrder} className={style.selectors}>

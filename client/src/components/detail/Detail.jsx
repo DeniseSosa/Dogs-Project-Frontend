@@ -28,7 +28,7 @@ const Detail = () => {
       <p className={style.detailP}>Weight:{dogDetail.weight}</p>
       <p className={style.detailP}>Height:{dogDetail.height}</p>
       <p className={style.detailP}>Life span:{dogDetail.life_span}</p>
-      <p className={style.detailP}>Temperament:{dogDetail?.temperament?.name}</p>
+      <p className={style.detailP}>Temperament:{dogDetail?.temperament?.map(temp=> temp.name)}</p>
       <img src={dogDetail.image} alt={dogDetail.name} className={style.imageDetail} />
       <Link to="/home">
       <button>Home</button>

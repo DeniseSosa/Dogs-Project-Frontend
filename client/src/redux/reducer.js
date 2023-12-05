@@ -41,9 +41,9 @@ const reducer = (state= initialState, action) =>{
                 dogsCopy: [...state.allDogs].filter((dog)=> dog.temperament?.includes(action.payload))
             }
         case NAME_BY_ORIGIN:
-        const dogByOrigin= (action.payload === "apiTemperaments")
-        ?[...state.allDogs].filter((dog)=> dog.created=== false)
-        :[...state.allDogs].filter((dog)=> dog.created=== true)
+        const dogByOrigin= (action.payload === "api")
+        ?[...state.allDogs].filter((dog)=> dog.created === false)
+        :[...state.allDogs].filter((dog)=> dog.created === true)
             return {
                 ...state,
                 dogsCopy: dogByOrigin
