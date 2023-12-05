@@ -39,7 +39,7 @@ const Form = () => {
   const onChange = (event) => {
     setCreate({
       ...create,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
     setErrors(validation(create));
   };
@@ -135,28 +135,28 @@ const Form = () => {
       <label htmlFor="life_span">Life Span:</label>
       <input
         type="radio"
-        value={create.life_span}
+        value="1-5"
         name="life_span"
         onChange={onChange}
       />
       1-5
       <input
         type="radio"
-        value={create.life_span}
+        value="5-10"
         name="life_span"
         onChange={onChange}
         />
       5-10
       <input
         type="radio"
-        value={create.life_span}
+        value="10-15"
         name="life_span"
         onChange={onChange}
       />
       10-15
       <input
         type="radio"
-        value={create.life_span}
+        value="+15"
         name="life_span"
         onChange={onChange}
       />
@@ -195,8 +195,8 @@ const Form = () => {
 </div>
 <div className={style.image}>
       <label htmlFor="image">Imagen</label>
-      <input type="file" accept="image/*"></input>
-      <img src={create.image} alt={create.name} />
+      <input type="file" name="image" accept="image/*"  value={create.image} onChange={onChange}/>
+      <img src={create.image}alt={create.name}/> 
       {errors.image && <p>{errors.image}</p>}
 </div>
 
