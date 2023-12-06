@@ -1,6 +1,6 @@
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
-const Card = ({ id, name, weight, height, life_span, temperament, image }) => {
+const Card = ({ id, name, weight, height, life_span, temperament, image }) => { // Recibo props de cards (que es el contenedor de las card)
   return (
     <div className={style.cardContainer}>
       <div className={style.cardNameH5}>

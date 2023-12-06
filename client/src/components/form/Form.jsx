@@ -20,7 +20,8 @@ const Form = () => {
     temperament: [],
     image: "",
   });
-  // console.log(create);
+  
+  console.log(create);
   // un estado de error para poder validar en tiempo real
   const [errors, setErrors] = useState({});
   // Estado global para traer los temperamentos
@@ -34,19 +35,22 @@ const Form = () => {
 
   // A medida que escribo o selecciono se guarde en la propiedad del estado local correpondiente
   const handleChange = (event) => {
-    if (event.target.name === "temperament") {
+    const { name, value } = event.target;
+    if (name === "temperament") {
+      // Si el nombre es "temperament", actualiza con un array de opciones seleccionadas
       setCreate({
         ...create,
-        temperament: [...create.temperament, event.target.value],
+        [name]: Array.from(event.target.selectedOptions, (option) => option.value),
+      });
+    } else {
+      // De lo contrario, actualiza normalmente
+      setCreate({
+        ...create,
+        [name]: value,
       });
     }
-    setCreate({
-      ...create,
-      [event.target.name]: event.target.value,
-    });
     setErrors(validation(create));
   };
-
   // despacho la action POSTDOG y le digo que el weight y el height se guarden igual q en la api
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,7 +58,7 @@ const Form = () => {
       postDog({
         ...create,
         height: `${create.heightMin} - ${create.heightMax}`,
-        weight: `${create.weightMin} - ${create.weightMax}`,
+        weight: `${create.weightMin} - ${create.weightMax}`,  // le pido que despache la action con este formato de height y weight
       })
     );
   };
@@ -221,3 +225,5 @@ const Form = () => {
   );
 };
 export default Form;
+
+

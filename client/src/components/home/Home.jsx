@@ -1,6 +1,7 @@
 // Hooks
 import { useSelector, useDispatch } from "react-redux";
 import  {useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // funciones de las actions
 import {getAllDogs,
      getTemperaments,
@@ -12,25 +13,25 @@ import {getAllDogs,
 import Cards from "../cards/Cards";
 import Pages from '../pages/Pages';
 import SearchBar from "../searchBar/SearchBar";
-import { Link } from "react-router-dom";
 //Style
 import style from "./Home.module.css"
 
 
 const Home= ()=>{
-    // Acceso al estado global
+    // Acceso al estado global dogs Copy todas las razas de perro
     const allDogs = useSelector(state => state.dogsCopy);
+    // Acceso al estado global que es la copia de los temperamentos
     const {allTempCopy} = useSelector(state=> state)
     const dispatch = useDispatch();
     // Estados locales para la paginacion 
-    const [dataQt, setDataQt]= useState(8)
-    const [currentPage, setCurrentPage]= useState(1)
+    const [dataQt, setDataQt]= useState(8) // cant de cards por page
+    const [currentPage, setCurrentPage]= useState(1) // page actual
 
     
 useEffect (()=> {
-    dispatch(getAllDogs())
-    dispatch(getTemperaments())
-},[dispatch])
+    dispatch(getAllDogs()) // cuando se monta el componente me traigo todos los perros para mostrarlos en las card
+    dispatch(getTemperaments()) // me traigo todos los temperamentos para hacer un select
+},[dispatch]) 
 
 // Paginacion
 const lastIndex= currentPage* dataQt; // 1*8
@@ -40,7 +41,7 @@ const nPage= Math.ceil(allDogs.length / dataQt);
 
 
 const handleAll = (event) => {
-    dispatch(tempAllNames(event.target.value))
+    dispatch(tempAllNames(event.target.value))  // aqui despacho cada action para manejar los filtros 
 }
 const handleDogOrigin = (event) => {
     dispatch(nameByOrigin(event.target.value))
@@ -54,7 +55,7 @@ const handleWeight= (event) => {
 
     return  (
     <div className={style.homeContainer}>
-            <SearchBar setCurrentPage={setCurrentPage}/>
+            <SearchBar setCurrentPage={setCurrentPage}/> 
         
             <div className={style.selectDiv}> 
             <select onChange={handleAll}  className={style.selectors}>
@@ -85,7 +86,7 @@ const handleWeight= (event) => {
             <button  className={style.create} > Create your own Breed</button>
             </Link>
             <Cards allDogs= {nDogs}/>
-            <Pages 
+            <Pages  // paso por props
             setCurrentPage={setCurrentPage} 
             currentPage= {currentPage} 
             nPage={nPage} />

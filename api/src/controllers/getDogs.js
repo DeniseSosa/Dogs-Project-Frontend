@@ -1,15 +1,14 @@
+//dependecies
 const axios = require ('axios');
 require ('dotenv').config();
+// functions
 const {API_KEY}= process.env;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
 const {Dog, Temperaments} = require('../db');
 
-
-
-
 const getDogs= async ()=> {
-        const {data} =  await axios(URL)
-        const apiBreedsMap= data?.map((dog)=>{
+        const {data} =  await axios(URL) // me traigo la data de la api
+        const apiBreedsMap= data?.map((dog)=>{ // mapeo la data para obtener lo que quiero 
          return {
              id:dog?.id,
              name:dog?.name,
@@ -22,11 +21,12 @@ const getDogs= async ()=> {
          }
         }) 
 
-        
-        const breeds_DB = await Dog.findAll({
+        const breeds_DB = await Dog.findAll({  // busco todos los dogs de la db los relaciono con el modelo temperaments a traves del alias temperament
             include:{
                  model: Temperaments, as:"temperament"}})
-        const dogDB= breeds_DB.map(dog=> {
+                 
+                 const dogDB= breeds_DB.map(dog=> {
+            const breedTempDB= dog.temperament.map(temp=> temp.name)// mapeo el temperamento asociado para poder traerlo directo a las cards
             return {
                 id: dog.id,
                 name:dog.name,
@@ -35,12 +35,12 @@ const getDogs= async ()=> {
                 life_span:dog.life_span,
                 image: dog.image,
                 created:true,
-                temperament: dog.temperament.map(temp=> temp.name)
+                temperament: breedTempDB.join(", ")
             }}
         )
         //console.log(breeds_DB); me devuelve en temperament un array temperament:[friendly]
 
-        return [...dogDB, ...apiBreedsMap]
+        return [...dogDB, ...apiBreedsMap]  // concateno lo que traigo de la api y de la db
 
 };
 
