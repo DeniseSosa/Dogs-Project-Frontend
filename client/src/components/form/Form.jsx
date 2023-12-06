@@ -7,12 +7,12 @@ import validation from "./validations";
 import {
   postDog,
   getTemperaments,
-  tempAllNames,
 } from "../../redux/actions/actions";
 //Style
 import style from "./Form.module.css";
 
 const Form = () => {
+// creo un estado local para poder llenarlo con lo que el usuario envia por body al back
   const [create, setCreate] = useState({
     name: "",
     weightMin: "",
@@ -20,23 +20,29 @@ const Form = () => {
     heightMin: "",
     heightMax: "",
     life_span: "",
-    temperament:"",
+    temperament:[],
     image: "",
   });
+  console.log(create);
+  // un estado de error para poder validar en tiempo real
   const [errors, setErrors] = useState({});
-  //
-  const [temp, setTemp] = useState([]);
   // Estado global para traer los temperamentos
   const { allTempCopy } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  //Montahe de temperamentos para el selector
+  //Montaje de temperamentos para el selector
   useEffect(() => {
     dispatch(getTemperaments());
   }, [dispatch]);
 
   // A medida que escribo o selecciono se guarde en la propiedad del estado local correpondiente
   const onChange = (event) => {
+    if(event.target.name === "temperament"){
+      setCreate({
+        ...create,
+        temperament: [...create.temperament, event.target.value]
+      })
+    }
     setCreate({
       ...create,
       [event.target.name]: event.target.value,
@@ -56,19 +62,6 @@ const Form = () => {
     );
   };
 
-  // creo el estado local para guardar en la etiqueta p todos los temperamentos
-  const tempSelected = (event) => {
-    dispatch(tempAllNames(event.target.value));
-    const opciones = event.target.options;
-    const seleccionadas = [];
-    for (let i = 0; i < opciones.length; i++) {
-      if (opciones[i].selected) {
-        seleccionadas.push(opciones[i].value);
-      }
-    }
-    setTemp([...temp, seleccionadas]);
-  };
-  // console.log(tempSelected);
 
   return (
     <div className={style.divContainer}>
@@ -169,33 +162,29 @@ const Form = () => {
         </div>
 
         <div className={style.temperaments}>
-          <label htmlFor="temperament">
-            Temperaments:
-            <section>
-              <select 
-              multiple
+          <label htmlFor="temperament"> 
+            Temperament:
+              <select multiple
+              type="checkbox"
               name="temperament" 
               onChange={onChange} 
-              >
-                <option>Temperaments:</option>
+              value={create.temperament}
+               >
                 {
-                allTempCopy.map((temp, index) => (<option value={temp.name} key={index}> {temp.name}</option>))
+                allTempCopy.map((temp, index) => {
+                  return<option value={temp.name} key={index} name={temp.name}> {temp.name}</option>
+                })
                 }
               </select>
-              <h4>The selected temperaments are:</h4>
-                {temp.map((tem, index) => (
-                <p key={index}>{tem}</p>
-              ))} 
-            </section>
           </label>
           {errors.temp && <p>{errors.temp}</p>}
-          {/* <label>Didn't find the temperaments? Add it here!!</label>
+         <label htmlFor="temperament">Didn't find the temperaments? Add it here!!</label>
           <input
             type="text"
             name="temperament"
             value={create.temperament}
             onChange={onChange}
-          /> */}
+          /> 
         </div>
         <div className={style.image}>
           <label htmlFor="image">Imagen</label>

@@ -59,7 +59,7 @@ const handleWeight= (event) => {
             <div className={style.selectDiv}> 
             <select onChange={handleAll}  className={style.selectors}>
                 <option value=""> Temperaments:</option>
-                  { allTempCopy.sort().map((temp,index )=> {
+                  { allTempCopy.map((temp,index )=> {
                       return  <option value={temp.name}  key={index}>{temp.name}</option>  
                     })
                 }

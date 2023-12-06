@@ -9,7 +9,7 @@ const getDogById = async (idRaza) => {
                 include:{
                      model: Temperaments, as:"temperament"}
                 });
-        return dogDbId;
+        return dogDbId
     } else {
        const get_Dogs=  await getDogs()
        //console.log(get_Dogs);
