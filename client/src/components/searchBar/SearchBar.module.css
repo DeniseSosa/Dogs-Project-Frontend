@@ -44,3 +44,17 @@
     right: 0;
     bottom: 0;
 }
+.backAllButton{
+    box-shadow: 0 0 10px #291901;
+}
+.searchContainer input {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0px #fcb92724,
+     7px 7px 20px 0 #fde5c5;
+    outline: none;
+    border:#fcb92719;
+}
+.searchContainer input:hover{
+    box-shadow: 0 0 10px #291901;
+}

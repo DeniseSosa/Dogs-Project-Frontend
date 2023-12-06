@@ -4,15 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // funciones
 import validation from "./validations";
-import {
-  postDog,
-  getTemperaments,
-} from "../../redux/actions/actions";
+import { postDog, getTemperaments } from "../../redux/actions/actions";
 //Style
 import style from "./Form.module.css";
 
 const Form = () => {
-// creo un estado local para poder llenarlo con lo que el usuario envia por body al back
+  // creo un estado local para poder llenarlo con lo que el usuario envia por body al back
   const [create, setCreate] = useState({
     name: "",
     weightMin: "",
@@ -20,10 +17,10 @@ const Form = () => {
     heightMin: "",
     heightMax: "",
     life_span: "",
-    temperament:[],
+    temperament: [],
     image: "",
   });
-  console.log(create);
+  // console.log(create);
   // un estado de error para poder validar en tiempo real
   const [errors, setErrors] = useState({});
   // Estado global para traer los temperamentos
@@ -36,12 +33,12 @@ const Form = () => {
   }, [dispatch]);
 
   // A medida que escribo o selecciono se guarde en la propiedad del estado local correpondiente
-  const onChange = (event) => {
-    if(event.target.name === "temperament"){
+  const handleChange = (event) => {
+    if (event.target.name === "temperament") {
       setCreate({
         ...create,
-        temperament: [...create.temperament, event.target.value]
-      })
+        temperament: [...create.temperament, event.target.value],
+      });
     }
     setCreate({
       ...create,
@@ -62,7 +59,6 @@ const Form = () => {
     );
   };
 
-
   return (
     <div className={style.divContainer}>
       <form onSubmit={handleSubmit} className={style.formContainer}>
@@ -79,7 +75,7 @@ const Form = () => {
             type="text"
             name="name"
             value={create.name}
-            onChange={onChange}
+            onChange={handleChange}
           />
           {errors.name && <p>{errors.name}</p>}
         </div>
@@ -90,7 +86,7 @@ const Form = () => {
             type="text"
             name="heightMin"
             value={create.heightMin}
-            onChange={onChange}
+            onChange={handleChange}
           />
           {errors.heightMin && <p>{errors.heightMin}</p>}
         </div>
@@ -101,7 +97,7 @@ const Form = () => {
             type="text"
             name="heightMax"
             value={create.heightMax}
-            onChange={onChange}
+            onChange={handleChange}
           />
           {errors.heightMax && <p>{errors.heightMax}</p>}
         </div>
@@ -112,7 +108,7 @@ const Form = () => {
             type="text"
             name="weightMin"
             value={create.weightMin}
-            onChange={onChange}
+            onChange={handleChange}
           />
           {errors.weightMin && <p>{errors.weightMin}</p>}
         </div>
@@ -123,68 +119,74 @@ const Form = () => {
             type="text"
             name="weightMax"
             value={create.weightMax}
-            onChange={onChange}
+            onChange={handleChange}
           />
           {errors.weightMax && <p>{errors.weightMax}</p>}
         </div>
 
         <div className={style.lifeSpan}>
           <label htmlFor="life_span">Life Span:</label>
+          1-5
           <input
             type="radio"
             value="1-5"
             name="life_span"
-            onChange={onChange}
-          />
-          1-5
-          <input
-            type="radio"
-            value="5-10"
-            name="life_span"
-            onChange={onChange}
+            onChange={handleChange}
           />
           5-10
           <input
             type="radio"
-            value="10-15"
+            value="5-10"
             name="life_span"
-            onChange={onChange}
+            onChange={handleChange}
           />
           10-15
           <input
             type="radio"
-            value="+15"
+            value="10-15"
             name="life_span"
-            onChange={onChange}
+            onChange={handleChange}
           />
           +15
+          <input
+            type="radio"
+            value="+15"
+            name="life_span"
+            onChange={handleChange}
+          />
           {errors.life_span && <p>{errors.life_span}</p>}
         </div>
 
         <div className={style.temperaments}>
-          <label htmlFor="temperament"> 
+          <label htmlFor="temperament">
             Temperament:
-              <select multiple
+            <select
+              multiple
               type="checkbox"
-              name="temperament" 
-              onChange={onChange} 
+              name="temperament"
+              onChange={handleChange}
               value={create.temperament}
-               >
-                {
-                allTempCopy.map((temp, index) => {
-                  return<option value={temp.name} key={index} name={temp.name}> {temp.name}</option>
-                })
-                }
-              </select>
+            >
+              {allTempCopy.map((temp, index) => {
+                return (
+                  <option value={temp.name} key={index} name={temp.name}>
+                    {" "}
+                    {temp.name}
+                  </option>
+                );
+              })}
+            </select>
           </label>
           {errors.temp && <p>{errors.temp}</p>}
-         <label htmlFor="temperament">Didn't find the temperaments? Add it here!!</label>
+          <label htmlFor="temperament">
+            Didn't find the temperaments? Add it here!!
+          </label>
           <input
             type="text"
             name="temperament"
             value={create.temperament}
-            onChange={onChange}
-          /> 
+            onChange={handleChange}
+          />
         </div>
         <div className={style.image}>
           <label htmlFor="image">Imagen</label>
@@ -193,7 +195,7 @@ const Form = () => {
             name="image"
             accept="url/*"
             value={create.image}
-            onChange={onChange}
+            onChange={handleChange}
             placeholder="insert URL please"
           />
           <img src={create.image} alt={create.name} />
@@ -202,16 +204,15 @@ const Form = () => {
 
         <button
           type="submit"
-          // disabled={
-          //   errors.name ||
-          //   errors.heightMin ||
-          //   errors.heightMax ||
-          //   errors.weightMin ||
-          //   errors.weightMax ||
-          //   errors.temperament ||
-          //   errors.image ||
-          //   errors.life_span
-          // }
+          disabled={
+            errors.name ||
+            errors.heightMin ||
+            errors.heightMax ||
+            errors.weightMin ||
+            errors.weightMax ||
+            errors.temperament ||
+            errors.life_span
+          }
         >
           Done!
         </button>

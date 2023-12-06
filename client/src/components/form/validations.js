@@ -21,7 +21,7 @@ if(!create.life_span){
 if(!create.temperament){
     errors.temperament= "An option must be chosen"
 }
-if(!(/.(gif|jpeg|jpg|png)$/).test(create.image)){
+if(!/\/(\w+)\/(\w+)(\?{1}.*)?$/.test(create.image)){
     errors.image= "Invalid"
 }
 return errors
