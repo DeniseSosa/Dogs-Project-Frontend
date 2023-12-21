@@ -29,7 +29,8 @@ const Detail = () => {
       <p className={style.detailP}>Weight:{dogDetail.weight}</p>
       <p className={style.detailP}>Height:{dogDetail.height}</p>
       <p className={style.detailP}>Life span:{dogDetail.life_span}</p>
-      <p className={style.detailP}>Temperament:{dogDetail?.id?.length > 3
+      <p className={style.detailP}>Temperament:{
+      dogDetail?.id?.length > 3
        ? (dogDetail?.temperament?.map(temp=> temp.name))
        : (dogDetail.temperament) }</p>
       <img src={dogDetail.image} alt={dogDetail.name} className={style.imageDetail} />

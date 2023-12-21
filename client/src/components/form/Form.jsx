@@ -202,8 +202,8 @@ const Form = () => {
             onChange={handleChange}
             placeholder="insert URL please"
           />
+          {errors.image?<p>{errors.image}</p> : errors.image === null}
           <img src={create.image} alt={create.name} />
-          {errors.image && <p>{errors.image}</p>}
         </div>
 
         <button
@@ -215,7 +215,8 @@ const Form = () => {
             errors.weightMin ||
             errors.weightMax ||
             errors.temperament ||
-            errors.life_span
+            errors.life_span || 
+            errors.image
           }
         >
           Done!

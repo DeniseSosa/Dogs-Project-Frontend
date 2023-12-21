@@ -72,12 +72,14 @@ export const postDog = (create) =>{
         const endpoint = "http://localhost:3001/dogs";
         try {
             const {data} = await axios.post(endpoint, create)
+            alert("created successfully")
             return dispatch ({
                 type: POST_DOG,
                 payload: data
             })
+            
         } catch (error) {
-            return error.message
+            return alert("Not created correctly")
         }
     }
 }

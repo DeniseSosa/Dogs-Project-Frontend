@@ -1,12 +1,12 @@
 const { Dog, Temperaments } = require('../db');
 
 const postDogController = async (name, image, height, weight, life_span, temperaments) => {
-    const [dogCreated, created] = await Dog.findOrCreate({
+    const [dogCreated, created] = await Dog.findOrCreate({  // el elemento a crear u objeto y un boolean  true si es creado
       where: { name, weight, height, image, life_span },
-      include: [{ model: Temperaments, as: 'temperament' }],
+      include: [{ model: Temperaments, as: 'temperament' }], // aca lo relaciono
     });
 
-    if (created) {
+    if (created) {  // utilizo el promise all  que devuelve una promesa  que termina ok cuando todas las promesas a iterar concluyeron
       const tempAssociations = await Promise.all(
         temperaments.map(async (tempName) => {
           const [tempAsociate, createdT] = await Temperaments.findOrCreate({
@@ -14,14 +14,14 @@ const postDogController = async (name, image, height, weight, life_span, tempera
           });
 
           if (createdT) {
-            return dogCreated.addTemperament(tempAsociate);
+            return dogCreated.addTemperament(tempAsociate); // metodo add[model] e como el set[model] pero crea una nueva asociacion
           }
         })
       );
-      // Esperar a que todas las asociaciones se completen antes de continuar
+      // lo mismo que arriba pero con las relaciones
       await Promise.all(tempAssociations);
 
-      // Recargar el perro con los temperamentos asociados
+      // el dog con sus temperaments
       const dogWithTemperaments = await Dog.findByPk(dogCreated.id, {
         include: [{ model: Temperaments, as: 'temperament' }],
       });
