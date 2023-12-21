@@ -18,12 +18,25 @@ const Form = () => {
     heightMax: "",
     life_span: "",
     temperament: [],
-    image: "",
+    image: ""
   });
   
   console.log(create);
   // un estado de error para poder validar en tiempo real
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    name: "",
+    weightMin: "",
+    weightMax: "",
+    heightMin: "",
+    heightMax: "",
+    life_span: "",
+    temperament: [],
+    image: ""
+  });
+
+  // estado local para los temperamentos escritos en el input
+  const [inputTemp, setInputTemp]= useState("")
+
   // Estado global para traer los temperamentos
   const { allTempCopy } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -35,22 +48,27 @@ const Form = () => {
 
   // A medida que escribo o selecciono se guarde en la propiedad del estado local correpondiente
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "temperament") {
+   // const { name, value } = event.target;
+    if (event.target.name === "temperament") {
       // Si el nombre es "temperament", actualiza con un array de opciones seleccionadas
       setCreate({
         ...create,
-        [name]: Array.from(event.target.selectedOptions, (option) => option.value),
+       // [name]: Array.from(event.target.selectedOptions, (option) => option.value),
+       temperament:  Array.from(event.target.selectedOptions, (option) => option.value)
       });
     } else {
       // De lo contrario, actualiza normalmente
       setCreate({
         ...create,
-        [name]: value,
+        [event.target.name]: event.target.value
       });
     }
     setErrors(validation(create));
   };
+
+  const handleInputTemp = (event)=>{
+   setInputTemp(event.target.value)
+  }
   // despacho la action POSTDOG y le digo que el weight y el height se guarden igual q en la api
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -181,16 +199,15 @@ const Form = () => {
               })}
             </select>
           </label>
-          {errors.temp && <p>{errors.temp}</p>}
           <label htmlFor="temperament">
             Didn't find the temperaments? Add it here!!
           </label>
           <input
             type="text"
-            name="temperament"
-            value={create.temperament}
-            onChange={handleChange}
-          />
+            onChange={handleInputTemp}/>
+            <p>{[...create.temperament, inputTemp].join(", ")}</p>
+
+            {errors.temperament && <p>{errors.temperament}</p>}
         </div>
         <div className={style.image}>
           <label htmlFor="image">Imagen</label>

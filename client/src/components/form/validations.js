@@ -18,7 +18,7 @@ if(!(/^[0-9]+$/).test(create.weightMax) || create.weightMax < create.weightMin |
 if(!create.life_span){
     errors.life_span="An option must be chosen"
 }
-if(create.temperament.length === null   ){
+if(!create.temperament.length){
     errors.temperament= "An option must be chosen"
 }
 if((/^(http|https):\/\/[a-zA-Z0-9-.]+\.(jpg|jpeg|gif|png)$/).test(create.image)){
