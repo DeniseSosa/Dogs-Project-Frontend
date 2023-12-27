@@ -34,7 +34,7 @@ const Form = () => {
   });
 
   // estado local para los temperamentos escritos en el input
-  const [inputTemp, setInputTemp]= useState("")
+  const [inputTemp, setInputTemp]= useState([])
 
   // Estado global para traer los temperamentos
   const { allTempCopy } = useSelector((state) => state);
@@ -54,7 +54,7 @@ const Form = () => {
       // Si el nombre es "temperament", actualiza con un array de opciones seleccionadas
       setCreate({
         ...create,
-        temperament: [...event.target.selectedOptions].map((option) => option.value ) //[...event.target.selectedOptions].map(option => option.value)
+        temperament: [...event.target.selectedOptions].map(option => option.value)
       });
     } else {
       // De lo contrario, actualiza normalmente
@@ -75,7 +75,8 @@ const Form = () => {
       postDog({
         ...create,
         height: `${create.heightMin} - ${create.heightMax}`,
-        weight: `${create.weightMin} - ${create.weightMax}`,  // le pido que despache la action con este formato de height y weight
+        weight: `${create.weightMin} - ${create.weightMax}`, 
+        temperament: create.temperament.concat(inputTemp) // le pido que despache la action con este formato de height y weight
       })
     );
   };
@@ -202,8 +203,10 @@ const Form = () => {
           <input
             type="text"
             name="temperament"
+            value={inputTemp}
             onChange={handleInputTemp}/>
-            <p>{[...create.temperament, inputTemp].join(", ")}</p>
+             <h2>{[...create.temperament, inputTemp].join(", ")}</h2> 
+           
 
             {errors.temperament && <p>{errors.temperament}</p>} 
         </div>
