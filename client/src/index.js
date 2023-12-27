@@ -1,5 +1,5 @@
 //import './index.css';
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 //import reportWebVitals from './reportWebVitals';
@@ -10,8 +10,9 @@ import store from './redux/store';
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-
+    <StrictMode>
       <App />
+    </StrictMode>
 
     </BrowserRouter>
  </Provider>,

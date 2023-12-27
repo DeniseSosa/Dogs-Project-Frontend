@@ -83,4 +83,3 @@ export const postDog = (create) =>{
         }
     }
 }
-console.log(postDog);

@@ -17,11 +17,10 @@ const Form = () => {
     heightMin: "",
     heightMax: "",
     life_span: "",
-    temperament: [],
+    temperament:[],
     image: ""
   });
   
-  console.log(create);
   // un estado de error para poder validar en tiempo real
   const [errors, setErrors] = useState({
     name: "",
@@ -46,15 +45,16 @@ const Form = () => {
     dispatch(getTemperaments());
   }, [dispatch]);
 
+  const handleInputTemp = (event)=>{
+    setInputTemp(event.target.value);
+  }
   // A medida que escribo o selecciono se guarde en la propiedad del estado local correpondiente
   const handleChange = (event) => {
-   // const { name, value } = event.target;
     if (event.target.name === "temperament") {
       // Si el nombre es "temperament", actualiza con un array de opciones seleccionadas
       setCreate({
         ...create,
-       // [name]: Array.from(event.target.selectedOptions, (option) => option.value),
-       temperament:  Array.from(event.target.selectedOptions, (option) => option.value)
+        temperament: [...event.target.selectedOptions].map((option) => option.value ) //[...event.target.selectedOptions].map(option => option.value)
       });
     } else {
       // De lo contrario, actualiza normalmente
@@ -65,10 +65,9 @@ const Form = () => {
     }
     setErrors(validation(create));
   };
-
-  const handleInputTemp = (event)=>{
-   setInputTemp(event.target.value)
-  }
+  console.log(inputTemp);
+  console.log(create.temperament);
+  
   // despacho la action POSTDOG y le digo que el weight y el height se guarden igual q en la api
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -184,7 +183,6 @@ const Form = () => {
             Temperament:
             <select
               multiple
-              type="checkbox"
               name="temperament"
               onChange={handleChange}
               value={create.temperament}
@@ -192,7 +190,6 @@ const Form = () => {
               {allTempCopy.map((temp, index) => {
                 return (
                   <option value={temp.name} key={index} name={temp.name}>
-                    {" "}
                     {temp.name}
                   </option>
                 );
@@ -204,10 +201,11 @@ const Form = () => {
           </label>
           <input
             type="text"
+            name="temperament"
             onChange={handleInputTemp}/>
             <p>{[...create.temperament, inputTemp].join(", ")}</p>
 
-            {errors.temperament && <p>{errors.temperament}</p>}
+            {errors.temperament && <p>{errors.temperament}</p>} 
         </div>
         <div className={style.image}>
           <label htmlFor="image">Imagen</label>
@@ -224,7 +222,6 @@ const Form = () => {
         </div>
 
         <button
-          type="submit"
           disabled={
             errors.name ||
             errors.heightMin ||
