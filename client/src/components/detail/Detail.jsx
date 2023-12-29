@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import axios from "axios";
 //style
 import style from "./Detail.module.css";
-
+import CardLoading from "../card/CardLoading";
 
 const Detail = () => {
   const { idRaza } = useParams();
@@ -18,7 +18,7 @@ const Detail = () => {
     const dog = async () => {
       const { data } = await axios.get(`http://localhost:3001/dogs/${idRaza}`);
       setDogDetail(data);
-    setloading(false)
+      setloading(false)
     };
     dog();
     return () => {
@@ -27,20 +27,22 @@ const Detail = () => {
   }, [idRaza]);
   console.log(dogDetail);
 
-  if(loading=== true){
-    return "Cargando🐶"
-  }
- 
-  
   return (
     <div className={style.detailContainer}>
-      <h2 className={style.detailName}>Name:{dogDetail?.name}</h2>
+      {
+        loading===true
+        ? <CardLoading/> 
+        : ( <>
+        <h2 className={style.detailName}>Name:{dogDetail?.name}</h2>
       <p className={style.detailP}>Id:{dogDetail?.id}</p>
       <p className={style.detailP}>Weight:{dogDetail?.weight}</p>
       <p className={style.detailP}>Height:{dogDetail.height}</p>
       <p className={style.detailP}>Life span:{dogDetail.life_span}</p>
       <p className={style.detailP}>Temperament:{dogDetail?.temperament }</p>
       <img src={dogDetail.image} alt={dogDetail.name} className={style.imageDetail} />
+        </>)
+    
+      }
       <Link to="/home">
       <button>Home</button>
       </Link>

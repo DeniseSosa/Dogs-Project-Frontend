@@ -46,3 +46,23 @@
 .create:hover{
     box-shadow: 0 0 10px #291901;
 }
+footer {
+    width: 80%;
+    font-size: 18px;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    border:none;
+    text-align: center;
+    padding: 10px;
+    color:#292001;
+
+}
+  
+  footer a {
+    color: #453604;
+    font-weight: bolder;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    color: #413204;
+  }
