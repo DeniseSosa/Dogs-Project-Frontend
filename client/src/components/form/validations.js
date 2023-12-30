@@ -1,6 +1,6 @@
 const validation = (create) =>{
     let errors = {};
-if (!create.name.length || create.name.length> 10){
+if (!create.name.length || create.name.length> 20){
     errors.name = "Name must must be less 10 characters and cannot be null"
 }
 if(!(/^[0-9]+$/).test(create.heightMin)|| create.heightMin > create.heightMax || isNaN(create.heightMin)){
