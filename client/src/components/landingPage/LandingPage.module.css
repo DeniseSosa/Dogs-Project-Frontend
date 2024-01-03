@@ -6,7 +6,7 @@
 
 }
 .appContainer{
-    background-image: url('./src/Dogs.jpg.jpg');
+    background-image: url(./src/Dogs.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -29,7 +29,7 @@
     }
 }
 .buttonHome{
-    background-image: url(./src/huella.jfif);
+    background-image: url(./src/huella.jpg);
     background-size: contain;
     background-position:center;
     width: 5em;

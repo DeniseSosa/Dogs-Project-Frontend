@@ -1,5 +1,5 @@
 .detailContainer{
-    background-image: url(../landingPage/src/huella.jfif);
+    background-image: url(../landingPage/src/huella.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,9 +12,9 @@
 }
 
 .detailP, .detailName{
-    font-size: 20px;
+    font-size: 25px;
     background: -webkit-linear-gradient(left, red, rgb(145, 96, 5), rgb(174, 174, 4), green, blue, indigo, rgb(243, 43, 243));
-    -webkit-background-clip:text;
+    background-clip:text;
     -webkit-text-fill-color: transparent;
     transition: color 0.5s;
 }

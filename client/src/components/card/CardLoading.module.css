@@ -1,5 +1,5 @@
 .LoaderContainer{
-    background-image: url(../landingPage/src/huella.jfif);
+    background-image: url(../landingPage/src/huella.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -35,7 +35,8 @@
 .loader::after{
 width: 85%;
 height: 85%;
-background-color:#163527;
+background-image: url(./loading.jpg);
+background-size: contain;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
@@ -44,4 +45,9 @@ transform: translate(-50%, -50%);
     to {
         transform: rotate(360deg);
     }
+}
+.LoaderContainer h2{
+    font-size:30px;
+    position: absolute;
+    top: 25%;
 }

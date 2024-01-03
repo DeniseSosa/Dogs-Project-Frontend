@@ -65,8 +65,6 @@ const Form = () => {
     }
     setErrors(validation(create));
   };
-  console.log(inputTemp);
-  console.log(create.temperament);
   
   // despacho la action POSTDOG y le digo que el weight y el height se guarden igual q en la api
   const handleSubmit = (event) => {

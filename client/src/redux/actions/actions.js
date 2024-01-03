@@ -28,7 +28,10 @@ export const getDogByName = (name) => {
     return async (dispatch) => {
         try {
             const {data} = await axios.get(`http://localhost:3001/name?name=${name}`)
-            return dispatch ({
+            if(data.length === 0){
+               return alert("Sorry there is no breed with that name")
+            }
+             return dispatch ({
                 type: GET_DOG_BY_NAME,
                 payload:data
             })
