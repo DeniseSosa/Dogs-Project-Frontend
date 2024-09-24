@@ -16,7 +16,7 @@ const Detail = () => {
   useEffect(() => {
     const dog = async () => {
      setloading(true)
-      const { data } = await axios.get(`http://localhost:3001/dogs/${idRaza}`);
+      const { data } = await axios.get(`/dogs/${idRaza}`);
       setDogDetail(data);
      setloading(false)
     };

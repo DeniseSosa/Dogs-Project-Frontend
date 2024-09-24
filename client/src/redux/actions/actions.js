@@ -11,7 +11,7 @@ import { GET_ALL_DOGS,
 
     
     export const getAllDogs= () =>{
-    const endpoint = "http://localhost:3001/dogs";
+    const endpoint = "/dogs";
     return async (dispatch)=>{
         try {
             const {data} = await axios.get(endpoint);
@@ -27,7 +27,7 @@ import { GET_ALL_DOGS,
 export const getDogByName = (name) => {
     return async (dispatch) => {
         try {
-            const {data} = await axios.get(`http://localhost:3001/name?name=${name}`)
+            const {data} = await axios.get(`/name?name=${name}`)
             if(data.length === 0){
                return alert("Sorry there is no breed with that name")
             }
@@ -42,7 +42,7 @@ export const getDogByName = (name) => {
 }
 
 export const getTemperaments = () =>{
-    const endpoint= "http://localhost:3001/temperaments"
+    const endpoint= "/temperaments"
     return async(dispatch)=>{
         try {
             const {data} = await axios.get(endpoint)
@@ -72,7 +72,7 @@ export const orderByWeight= (weightOrder) =>{
 
 export const postDog = (create) =>{
     return async (dispatch) =>{
-        const endpoint = "http://localhost:3001/dogs";
+        const endpoint = "/dogs";
         try {
             const {data} = await axios.post(endpoint, create)
             alert("created successfully")
